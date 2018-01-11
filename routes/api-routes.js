@@ -17,7 +17,7 @@ module.exports = function(app) {
  //    Experimental.create(req.body);
  //  });
 
-  app.post("/api/experiments", function(req, res) {
+  app.post("https://pathfinder-server.herokuapp.com/api/experiments", function(req, res) {
     console.log(req.body);
     Experiments.create(req.body)
     .then(function(data) {
@@ -25,7 +25,7 @@ module.exports = function(app) {
     })
   });
 
-  app.post("/api/new_data", function(req, res) {
+  app.post("https://pathfinder-server.herokuapp.com/api/new_data", function(req, res) {
     console.log(req.body);
     Data.create(req.body)
     .then(function(data) {
@@ -33,7 +33,7 @@ module.exports = function(app) {
     })
   });
 
-  app.get("/api/experiments/:userID", function(req, res) {
+  app.get("https://pathfinder-server.herokuapp.com/api/experiments/:userID", function(req, res) {
     Experiments.findAll({ where: {userID: req.params} })
     .then(function(data) {
       res.json(data);
@@ -47,7 +47,7 @@ module.exports = function(app) {
   //   })
   // })
 
-  app.get("/api/login", function(req, res) {
+  app.get("https://pathfinder-server.herokuapp.com/api/login", function(req, res) {
     User.findOne({ where: {email: req.body.email, password: req.body.password} })
     .then(function(data) {
       res.json(data);
@@ -61,7 +61,7 @@ module.exports = function(app) {
 //     }
 // ));
 
-  app.post('/api/login', passport.authenticate('local-signin', {
+  app.post('https://pathfinder-server.herokuapp.com/api/login', passport.authenticate('local-signin', {
         successRedirect: '/dashboard',
  
         failureRedirect: '/register'
@@ -73,7 +73,7 @@ module.exports = function(app) {
 
   // app.get('/logout',authController.logout);
 
-  app.post("/api/register", function(req, res) {
+  app.post("https://pathfinder-server.herokuapp.com/api/register", function(req, res) {
     passport.authenticate('local-signup'),
     function(req, res) {
       const user = {email, password} = req.body;
